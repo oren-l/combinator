@@ -1,6 +1,17 @@
-# Cli Template for NodeJS
+# Combinator
 
-Use this template to create npm package with executables.
+## Roadmap
+
+- [ ] Route a single endpoint to a configurable outgoing path
+- [ ] Route multiple endpoints
+- [ ] Create config format
+- [ ] Add e2e tests (using docker - testcontainers)
+- [ ] Add [HMR](https://webpack.js.org/concepts/hot-module-replacement/) support
+- [ ] Add configurable fallback routing
+- [ ] Add websocket support
+- [ ] Add support for cookie domain rewrite
+- [ ] Enable running apps from combinator (will start and proxy them)
+- [ ] Enable random port assignment for apps starting from combinator
 
 ## Requirements
 
