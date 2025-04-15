@@ -12,6 +12,20 @@ describe("simple routing", () => {
   beforeAll(async () => {
     log("building container image...");
     const build = await GenericContainer.fromDockerfile(".", "e2e/simple-routing/Dockerfile").build();
+    log("adding combinator.json config...");
+    build.withCopyContentToContainer([
+      {
+        target: "/workspace/combinator-proxy.json",
+        content: JSON.stringify({
+          routes: [
+            {
+              path: "/wttr",
+              target: "http://wttr.in/",
+            },
+          ],
+        }),
+      },
+    ]);
     build.withCommand(["combinator-proxy"]).withExposedPorts(8080);
     log("starting container...");
     container = await build.start();

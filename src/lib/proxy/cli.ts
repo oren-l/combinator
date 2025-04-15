@@ -5,6 +5,12 @@ export function parseArgs() {
   const args = yargs(hideBin(process.argv))
     .scriptName("combinator-proxy")
     .usage("$0 [args]")
+    .option("file", {
+      alias: "f",
+      type: "string",
+      description: "path to config file",
+      default: "combinator-proxy.json",
+    })
     .option("port", {
       alias: "p",
       type: "number",

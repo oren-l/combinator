@@ -18,6 +18,20 @@ describe.concurrent("select port", { timeout: 60 * 1000 }, () => {
   test("should start server at default port (8080) when no port is specified", async () => {
     log("building container image...");
     const image = await GenericContainer.fromDockerfile(".", "e2e/select-port/Dockerfile").build();
+    log("adding combinator.json config...");
+    image.withCopyContentToContainer([
+      {
+        target: "/workspace/combinator-proxy.json",
+        content: JSON.stringify({
+          routes: [
+            {
+              path: "/wttr",
+              target: "http://wttr.in/",
+            },
+          ],
+        }),
+      },
+    ]);
     image.withCommand(["combinator-proxy"]).withExposedPorts(8080);
     log("starting container...");
     container = await image.start();
@@ -36,6 +50,20 @@ describe.concurrent("select port", { timeout: 60 * 1000 }, () => {
   test("should start server at specified port when port is specified", async () => {
     log("building container image...");
     const image = await GenericContainer.fromDockerfile(".", "e2e/select-port/Dockerfile").build();
+    log("adding combinator.json config...");
+    image.withCopyContentToContainer([
+      {
+        target: "/workspace/combinator-proxy.json",
+        content: JSON.stringify({
+          routes: [
+            {
+              path: "/wttr",
+              target: "http://wttr.in/",
+            },
+          ],
+        }),
+      },
+    ]);
     image.withCommand(["combinator-proxy", "--port=3000"]).withExposedPorts(3000);
     log("starting container...");
     container = await image.start();

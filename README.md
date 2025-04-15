@@ -2,7 +2,7 @@
 
 ## Roadmap
 
-- [ ] Route a single endpoint to a configurable outgoing path
+- [x] Route a single endpoint to a configurable outgoing path
 - [ ] Route multiple endpoints
 - [ ] Create config format
 - [x] Add e2e tests (using docker - testcontainers)
