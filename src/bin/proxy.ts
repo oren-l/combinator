@@ -25,6 +25,9 @@ config.routes.forEach((route) => {
   server.use(
     createProxyMiddleware({
       pathFilter: route.path,
+      pathRewrite: {
+        [`^${route.path}`]: "",
+      },
       target: route.target,
       changeOrigin: true,
     }),
