@@ -4,7 +4,7 @@ import waitOn from "wait-on";
 import { createLogger } from "../utils/logger";
 import axios from "axios";
 
-describe.concurrent("simple routing", { timeout: 60 * 1000 }, () => {
+describe.concurrent("select port", { timeout: 60 * 1000 }, () => {
   let container: StartedTestContainer;
   const log = createLogger();
 
