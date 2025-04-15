@@ -1,7 +1,8 @@
+import { parseArgs } from "@lib/proxy/cli";
 import express from "express";
 import { createProxyMiddleware } from "http-proxy-middleware";
 
-const port = 8080;
+const { port } = parseArgs();
 
 const server = express();
 
