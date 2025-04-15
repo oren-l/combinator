@@ -12,7 +12,7 @@ describe("simple routing", () => {
   beforeAll(async () => {
     log("building container image...");
     const build = await GenericContainer.fromDockerfile(".", "e2e/simple-routing/Dockerfile").build();
-    log("adding combinator.json config...");
+    log("adding combinator-proxy.json config...");
     build.withCopyContentToContainer([
       {
         target: "/workspace/combinator-proxy.json",
