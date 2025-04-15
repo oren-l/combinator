@@ -57,10 +57,12 @@ When installing this package via npm, the executables that are available are onl
 - `pnpm run format:check` - only check formatting
 - `pnpm run format:write` - fix formatting
 - `pnpm run typecheck` - check typescript rules
-- `pnpm run test` - not yet implemented
+- `pnpm run test` - run unittest
+- `pnpm run test:watch` - run unittest and rerun on changes
+- `pnpm run test:debug` - run unittest in debug mode
 - `pnpm run e2e` - run e2e tests
-- `pnpm run e2e:watch` - run e2e tests and rerun on changes
+- `pnpm run e2e:watch` - run e2e tests and rerun on test files changes (not source code!)
 - `pnpm run e2e:debug` - run e2e tests in debugging mode
 - `pnpm run build` - builds source to `dist` folder and installs it in each example (see [Examples](#examples) section)
-- `pnpm run status:quick` - checks project status (format + typecheck + build passes)
+- `pnpm run status:quick` - checks project status (format + typecheck + unittest + build passes)
 - `pnpm run status:full` - checks full project status (status:quick + e2e tests)
