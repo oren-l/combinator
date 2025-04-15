@@ -3,7 +3,7 @@
 ## Roadmap
 
 - [x] Route a single endpoint to a configurable outgoing path
-- [ ] Route multiple endpoints
+- [x] Route multiple endpoints
 - [ ] Create config format
 - [x] Add e2e tests (using docker - testcontainers)
 - [ ] Add [HMR](https://webpack.js.org/concepts/hot-module-replacement/) support
