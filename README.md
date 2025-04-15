@@ -5,7 +5,7 @@
 - [ ] Route a single endpoint to a configurable outgoing path
 - [ ] Route multiple endpoints
 - [ ] Create config format
-- [ ] Add e2e tests (using docker - testcontainers)
+- [x] Add e2e tests (using docker - testcontainers)
 - [ ] Add [HMR](https://webpack.js.org/concepts/hot-module-replacement/) support
 - [ ] Add configurable fallback routing
 - [ ] Add websocket support
@@ -58,5 +58,9 @@ When installing this package via npm, the executables that are available are onl
 - `pnpm run format:write` - fix formatting
 - `pnpm run typecheck` - check typescript rules
 - `pnpm run test` - not yet implemented
+- `pnpm run e2e` - run e2e tests
+- `pnpm run e2e:watch` - run e2e tests and rerun on changes
+- `pnpm run e2e:debug` - run e2e tests in debugging mode
 - `pnpm run build` - builds source to `dist` folder and installs it in each example (see [Examples](#examples) section)
-- `pnpm run status` - checks project status (format + typecheck + build passes)
+- `pnpm run status:quick` - checks project status (format + typecheck + build passes)
+- `pnpm run status:full` - checks full project status (status:quick + e2e tests)

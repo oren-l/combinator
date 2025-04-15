@@ -13,12 +13,16 @@
     "format:write": "prettier . --write",
     "typecheck": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "e2e": "vitest --config e2e.config.ts",
+    "__e2e": "vitest --config e2e.config.ts",
+    "e2e": "pnpm __e2e run",
+    "e2e:watch": "pnpm __e2e watch",
+    "e2e:debug": "DEBUG=testcontainers* pnpm __e2e watch --test-timeout=0 --no-file-parallelism",
     "prebuild": "rimraf dist/",
     "build": "node scripts/build.mjs",
     "postbuild": "pnpm pack --out=examples/.npm-local/combinator.tgz && pnpm run update-examples",
     "update-examples": "node scripts/update-examples.mjs",
-    "status": "pnpm run format:check && pnpm run typecheck && pnpm run build"
+    "status:quick": "pnpm run format:check && pnpm run typecheck && pnpm run build",
+    "status:full": "pnpm status:quick && pnpm e2e"
   },
   "keywords": [],
   "author": "Oren Levi",
