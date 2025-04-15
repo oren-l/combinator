@@ -8,7 +8,7 @@ const server = express();
 server.use(
   createProxyMiddleware({
     pathFilter: "/wttr",
-    target: "http://wttr.in",
+    target: "https://wttr.in",
     changeOrigin: true,
   }),
 );

@@ -20,7 +20,7 @@ echo(examples.map((s) => `- ${s}`).join("\n"));
 for (const item of examples) {
   echo(chalk.whiteBright(`\nupdating ${chalk.bold.greenBright(item)}...`));
   cd(item);
-  await $`npm install --no-save ../.npm-local/my-cli-project.tgz`;
+  await $`npm install --no-save ../.npm-local/combinator.tgz`;
 }
 
 function isNotHidden(item) {

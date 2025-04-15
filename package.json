@@ -13,9 +13,10 @@
     "format:write": "prettier . --write",
     "typecheck": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "e2e": "vitest --config e2e.config.ts",
     "prebuild": "rimraf dist/",
     "build": "node scripts/build.mjs",
-    "postbuild": "pnpm pack --out=examples/.npm-local/my-cli-project.tgz && pnpm run update-examples",
+    "postbuild": "pnpm pack --out=examples/.npm-local/combinator.tgz && pnpm run update-examples",
     "update-examples": "node scripts/update-examples.mjs",
     "status": "pnpm run format:check && pnpm run typecheck && pnpm run build"
   },
@@ -27,19 +28,27 @@
   "devDependencies": {
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.10",
+    "@types/wait-on": "^5.3.4",
+    "axios": "^1.8.4",
     "esbuild": "^0.25.1",
     "prettier": "3.5.3",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.2",
+    "vitest": "^3.1.1",
+    "wait-on": "^8.0.3",
     "zx": "^8.4.1"
   },
   "dependencies": {
     "express": "^5.1.0",
-    "http-proxy-middleware": "^3.0.5"
+    "http-proxy-middleware": "^3.0.5",
+    "testcontainers": "^10.24.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "esbuild"
+      "cpu-features",
+      "esbuild",
+      "protobufjs",
+      "ssh2"
     ]
   }
 }
