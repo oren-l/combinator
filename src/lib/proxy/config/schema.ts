@@ -10,6 +10,7 @@ const route = z
 export const schema = z
   .object({
     routes: z.array(route),
+    fallback: z.string().optional(),
   })
   .strict();
 

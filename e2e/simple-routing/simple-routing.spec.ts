@@ -119,4 +119,41 @@ describe.concurrent("simple routing", { timeout: 60 * 1000 }, () => {
     expect(resProxy.status).toBe(200);
     expect(resProxy.data).toContain("Reverse proxy");
   });
+
+  test("should support fallback routing", async () => {
+    log("building container image...");
+    const image = await GenericContainer.fromDockerfile(".", "e2e/simple-routing/Dockerfile").build();
+    log("adding combinator-proxy.json config...");
+    image.withCopyContentToContainer([
+      {
+        target: "/workspace/combinator-proxy.json",
+        content: JSON.stringify({
+          routes: [
+            {
+              path: "/wttr",
+              target: "http://wttr.in/",
+            },
+          ],
+          fallback: "https://developer.mozilla.org",
+        }),
+      },
+    ]);
+    image.withCommand(["combinator-proxy"]).withExposedPorts(8080);
+    log("starting container...");
+    container = await image.start();
+    const host = container.getHost();
+    const port = container.getMappedPort(8080);
+    const serverEndpoint = `${host}:${port}`;
+    log(`waiting for server start at: ${serverEndpoint}`);
+    await waitOn({
+      resources: [`tcp:${serverEndpoint}`],
+    });
+    const resWttr = await axios.get(`http://${serverEndpoint}/wttr`);
+    expect(resWttr.status).toBe(200);
+    expect(resWttr.data).toContain("Weather report");
+
+    const resProxy = await axios.get(`http://${serverEndpoint}/`);
+    expect(resProxy.status).toBe(200);
+    expect(resProxy.data).toContain("MDN Web Docs");
+  });
 });

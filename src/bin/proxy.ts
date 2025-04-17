@@ -34,6 +34,15 @@ config.routes.forEach((route) => {
   );
 });
 
+if (config.fallback) {
+  server.use(
+    createProxyMiddleware({
+      target: config.fallback,
+      changeOrigin: true,
+    }),
+  );
+}
+
 server.listen(port, () => {
   console.log(`server listening on ${port}`);
 });
