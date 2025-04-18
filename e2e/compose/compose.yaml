@@ -2,10 +2,12 @@ services:
   legacy_app:
     image: "edirom/ess-website"
     hostname: www.example.com
+    restart: unless-stopped
 
   wiki_app:
     image: "mediawiki"
     hostname: www.wiki.org
+    restart: unless-stopped
 
   proxy:
     build:
