@@ -19,10 +19,10 @@ if (result instanceof Error) {
 const config: ProxyConfig = result;
 console.log(config);
 
-const server = express();
+const app = express();
 
 config.routes.forEach((route) => {
-  server.use(
+  app.use(
     createProxyMiddleware({
       pathFilter: route.path,
       pathRewrite: {
@@ -35,7 +35,7 @@ config.routes.forEach((route) => {
 });
 
 if (config.fallback) {
-  server.use(
+  app.use(
     createProxyMiddleware({
       target: config.fallback,
       changeOrigin: true,
@@ -43,6 +43,16 @@ if (config.fallback) {
   );
 }
 
-server.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`server listening on ${port}`);
+});
+
+["SIGINT", "SIGTERM"].forEach((signal) => {
+  process.on(signal, () => {
+    console.log(`Received ${signal}, shutting down gracefully...`);
+    server.close(() => {
+      console.log("HTTP server closed.");
+      process.exit(0);
+    });
+  });
 });
