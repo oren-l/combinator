@@ -2,11 +2,17 @@ services:
   legacy_app:
     image: "edirom/ess-website"
     hostname: www.example.com
+    depends_on:
+      proxy:
+        condition: service_healthy
     restart: unless-stopped
 
   wiki_app:
     image: "mediawiki"
     hostname: www.wiki.org
+    depends_on:
+      proxy:
+        condition: service_healthy
     restart: unless-stopped
 
   proxy:
@@ -18,3 +24,9 @@ services:
       - DEBUG=http-proxy-middleware*
     ports:
       - 8080:8080
+    restart: "no"
+    healthcheck:
+      test: ["CMD", "true"] # true if the container is alive
+      interval: 5s
+      timeout: 2s
+      retries: 3

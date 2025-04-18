@@ -13,14 +13,16 @@ describe("compose", () => {
   beforeAll(async () => {
     log("starting environment...");
     await retry({ delayMS: 1000, maxRetries: 3 }, async () => {
-      environment = await new DockerComposeEnvironment("e2e/compose", "compose.yaml").up();
+      environment = await new DockerComposeEnvironment("e2e/compose", "compose.yaml").withBuild().up();
     });
   });
 
   afterAll(async () => {
-    log("stopping environment...");
-    await environment.down();
-    log("environment down.");
+    if (environment) {
+      log("stopping environment...");
+      await environment.down();
+      log("environment down.");
+    }
   });
 
   describe("routing", () => {

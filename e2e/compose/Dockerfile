@@ -7,5 +7,3 @@ RUN npm install -g .npm-local/combinator.tgz
 
 # copy combinator-proxy config file
 COPY e2e/compose/combinator-proxy.json .
-
-EXPOSE 8080
