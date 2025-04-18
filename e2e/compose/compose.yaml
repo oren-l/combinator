@@ -26,7 +26,7 @@ services:
       - 8080:8080
     restart: "no"
     healthcheck:
-      test: ["CMD", "true"] # true if the container is alive
-      interval: 5s
+      test: ["CMD", "true"] # just to check the container is alive
+      interval: 100ms
       timeout: 2s
       retries: 3
