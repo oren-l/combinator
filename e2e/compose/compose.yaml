@@ -2,14 +2,10 @@ services:
   legacy_app:
     image: "edirom/ess-website"
     hostname: www.example.com
-    networks:
-      - internal_network
 
   wiki_app:
     image: "mediawiki"
     hostname: www.wiki.org
-    networks:
-      - internal_network
 
   proxy:
     build:
@@ -20,9 +16,3 @@ services:
       - DEBUG=http-proxy-middleware*
     ports:
       - 8080:8080
-    networks:
-      - internal_network
-
-networks:
-  internal_network:
-    driver: bridge
