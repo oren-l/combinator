@@ -6,7 +6,8 @@
     "dist"
   ],
   "bin": {
-    "combinator-proxy": "dist/proxy.js"
+    "combinator-proxy": "dist/proxy.js",
+    "combinator": "dist/runner.js"
   },
   "scripts": {
     "format:check": "prettier . --check",
