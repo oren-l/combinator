@@ -25,10 +25,7 @@
     "postbuild": "pnpm pack --out=examples/.npm-local/combinator.tgz && pnpm run update-examples",
     "update-examples": "node scripts/update-examples.mjs",
     "status:quick": "pnpm run format:check && pnpm run typecheck && pnpm run test && pnpm run build",
-    "status:full": "pnpm status:quick && pnpm e2e",
-    "e2e:compose:up": "docker compose -f e2e/compose/compose.yaml up -d --build",
-    "e2e:compose:down": "docker compose -f e2e/compose/compose.yaml down",
-    "e2e:compose:logs": "docker compose -f e2e/compose/compose.yaml logs -f"
+    "status:full": "pnpm status:quick && pnpm e2e"
   },
   "keywords": [],
   "author": "Oren Levi",

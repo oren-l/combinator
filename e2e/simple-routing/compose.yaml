@@ -18,7 +18,7 @@ services:
   proxy:
     build:
       context: ../../
-      dockerfile: e2e/compose/Dockerfile
+      dockerfile: e2e/simple-routing/Dockerfile
     command: ["combinator-proxy"]
     environment:
       - DEBUG=http-proxy-middleware*

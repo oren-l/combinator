@@ -6,4 +6,4 @@ COPY examples/.npm-local .npm-local
 RUN npm install -g .npm-local/combinator.tgz
 
 # copy combinator-proxy config file
-COPY e2e/compose/combinator-proxy.json .
+COPY e2e/simple-routing/combinator-proxy.json .
