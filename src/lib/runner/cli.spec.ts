@@ -47,10 +47,10 @@ describe("parseArgs", () => {
     });
   });
 
-  test("should default to `combinator-proxy.json` file when no fie argument is specified", () => {
+  test("should default to `combinator.json` file when no fie argument is specified", () => {
     process.argv = ["path/to/node", "path/to/js-executable"];
     expect(parseArgs()).toMatchObject({
-      file: "./combinator-proxy.json",
+      file: "./combinator.json",
     });
   });
 });

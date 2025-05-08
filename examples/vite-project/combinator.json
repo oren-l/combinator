@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "vite",
+      "cmd": "vite --port=${port} --strictPort",
+      "path": "/vite"
+    }
+  ]
+}

@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "combinator": "combinator-proxy"
+    "combinator-proxy": "combinator-proxy",
+    "combinator": "combinator"
   },
   "devDependencies": {
     "typescript": "~5.7.2",
