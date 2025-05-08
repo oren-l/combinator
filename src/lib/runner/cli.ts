@@ -3,13 +3,13 @@ import { hideBin } from "yargs/helpers";
 
 export function parseArgs() {
   const args = yargs(hideBin(process.argv))
-    .scriptName("combinator-proxy")
+    .scriptName("combinator")
     .usage("$0 [args]")
     .option("file", {
       alias: "f",
       type: "string",
       description: "path to config file",
-      default: "./combinator-proxy.json",
+      default: "./combinator.json",
     })
     .option("port", {
       alias: "p",
