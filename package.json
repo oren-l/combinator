@@ -48,6 +48,7 @@
     "zx": "^8.5.3"
   },
   "dependencies": {
+    "concurrently": "^9.1.2",
     "express": "^5.1.0",
     "http-proxy-middleware": "^3.0.5",
     "testcontainers": "^10.25.0",
