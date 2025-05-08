@@ -1,0 +1,32 @@
+services:
+  legacy_app:
+    image: "edirom/ess-website"
+    hostname: www.example.com
+    depends_on:
+      proxy:
+        condition: service_healthy
+    restart: unless-stopped
+
+  wiki_app:
+    image: "mediawiki"
+    hostname: www.wiki.org
+    depends_on:
+      proxy:
+        condition: service_healthy
+    restart: unless-stopped
+
+  proxy:
+    build:
+      context: ../../
+      dockerfile: e2e/simple-routing/Dockerfile
+    command: ["combinator-proxy"]
+    environment:
+      - DEBUG=http-proxy-middleware*
+    ports:
+      - 8080:8080
+    restart: "no"
+    healthcheck:
+      test: ["CMD", "true"] # just to check the container is alive
+      interval: 100ms
+      timeout: 2s
+      retries: 3

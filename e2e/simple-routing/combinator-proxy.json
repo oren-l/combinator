@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "path": "/wiki",
+      "target": "http://www.wiki.org:80"
+    }
+  ],
+  "fallback": "http://www.example.com:80"
+}

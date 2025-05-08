@@ -147,3 +147,5 @@ dist
 examples/**/package-lock.json
 
 examples/.npm-local/*
+
+.DS_Store
